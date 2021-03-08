@@ -1,8 +1,6 @@
 from MyHolidays.myholidays.holidays import MyCalendar
 from datetime import date
 import pytest
-
-
 class TestMyCalendar:
     def test_class_declared(self):
         """
@@ -10,14 +8,12 @@ class TestMyCalendar:
         """
         objeto = MyCalendar()
         assert isinstance(objeto, MyCalendar)
-
     def test_inner_list_declared(self):
         """
         Testar se o objeto possui uma lista interna chamada datas
         """
         objeto = MyCalendar()
         assert isinstance(objeto.datas, list)
-
     datas = [
         (date(2021, 12, 5), date(2021, 4, 21), 2),
         ('25/12/2021', date(2021, 4, 21), 2),
@@ -28,7 +24,6 @@ class TestMyCalendar:
         ([1, 2, 3], date(2021, 4, 21), 1),
         ((1, 2, 3), date(2021, 4, 21), 1),
     ]
-
     @pytest.mark.parametrize("dt1, dt2, tamanho_lista", datas)
     def test_class_instanced_with(self, dt1, dt2, tamanho_lista):
         """
@@ -38,7 +33,6 @@ class TestMyCalendar:
         objeto = MyCalendar(dt1, dt2)
         assert len(objeto.datas) == tamanho_lista
         assert isinstance(objeto.datas[0], date)
-
     def test_receive_bad_formatted_strings(self):
         """
         Testar se o objeto, ao ser instanciado recebe uma lista de strings
@@ -51,7 +45,6 @@ class TestMyCalendar:
         objeto = MyCalendar(dt1, dt2, dt3)
         assert len(objeto.datas) == 1
         assert isinstance(objeto.datas[0], date)
-
     def test_receive_bad_formatted_strings_2(self):
         """
         Testar se o objeto, ao ser instanciado recebe uma lista de strings
@@ -64,7 +57,6 @@ class TestMyCalendar:
         objeto = MyCalendar(dt1, dt2, dt3)
         assert len(objeto.datas) == 1
         assert isinstance(objeto.datas[0], date)
-
     def test_method_add_holiday_1(self):
         """
         Testar se método add_holiday consegue adicionar um novo feriado.
@@ -78,7 +70,6 @@ class TestMyCalendar:
         assert isinstance(objeto.datas[0], date)
         assert isinstance(objeto.datas[1], date)
         assert isinstance(objeto.datas[2], date)
-
     def test_method_add_holiday_2(self):
         """
         Testar se método add_holiday consegue adicionar mais de
@@ -95,7 +86,6 @@ class TestMyCalendar:
         assert isinstance(objeto.datas[1], date)
         assert isinstance(objeto.datas[2], date)
         assert isinstance(objeto.datas[3], date)
-
     def test_method_add_holiday_3(self):
         """
         Testar se método add_holiday consegue adicionar mais de
@@ -113,7 +103,6 @@ class TestMyCalendar:
         assert isinstance(objeto.datas[1], date)
         assert isinstance(objeto.datas[2], date)
         assert isinstance(objeto.datas[3], date)
-
     def test_method_add_holiday_4(self):
         """
         Testar se método add_holiday consegue adicionar mais
@@ -130,7 +119,6 @@ class TestMyCalendar:
         objeto.add_holiday(dt1, dt3)
         objeto.add_holiday(dt4)
         assert len(objeto.datas) == 4
-
     def test_method_add_holiday_5(self):
         """
         Testar se método add_holiday é resiliente com datas mal formadas.
@@ -143,7 +131,6 @@ class TestMyCalendar:
         objeto.add_holiday(dt2)
         objeto.add_holiday(dt3)
         assert len(objeto.datas) == 1
-
     def test_method_check_holiday_1(self):
         """
         Testar se método check_holiday verifica se a data
@@ -160,7 +147,6 @@ class TestMyCalendar:
         assert objeto.check_holiday(dt1) is True
         assert objeto.check_holiday(dt4) is False
         assert objeto.check_holiday(dt5) is False
-
     def test_method_check_holiday_2(self):
         """
         Testar se método check_holiday verifica se a data passada
@@ -178,7 +164,6 @@ class TestMyCalendar:
         assert objeto.check_holiday(dt3) is False
         assert objeto.check_holiday(dt4) is False
         assert objeto.check_holiday(dt5) is False
-
     def test_method_check_holiday_3(self):
         """
         Testar se método check_holiday verifica se a data passada
